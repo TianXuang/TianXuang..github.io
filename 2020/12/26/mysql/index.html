@@ -17,18 +17,19 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>mysql | Hexo</title>
+  <title>数据库索引的底层原理 | Hexo</title>
   <meta property="og:type" content="article">
-<meta property="og:title" content="mysql">
-<meta property="og:url" content="http://example.com/2020/12/26/mysql/index.html">
+<meta property="og:title" content="数据库索引的底层原理">
+<meta property="og:url" content="http://example.com/2020/12/26/Mysql/index.html">
 <meta property="og:site_name" content="java">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-26T08:49:31.000Z">
-<meta property="article:modified_time" content="2020-12-26T08:49:31.337Z">
+<meta property="article:modified_time" content="2020-12-26T13:46:10.356Z">
 <meta property="article:author" content="迷途小书童">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2020/12/26/mysql/index.html">
+  <link rel="canonical" href="http://example.com/2020/12/26/Mysql/index.html">
   
     <link rel="alternate" href="/atom.xml" title="java" type="application/atom+xml">
   
@@ -151,7 +152,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -161,7 +162,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/java/" style="font-size: 13px;">java</a>
+      <a href="/tags/java/" style="font-size: 13px;">java</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a>
     </div>
   </div>
 
@@ -189,7 +190,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2020/12/26/mysql/" class="title">mysql</a>
+                <a href="/2020/12/26/Mysql/" class="title">数据库索引的底层原理</a>
               </p>
               <p class="item-date">
                 <time datetime="2020-12-26T08:49:31.000Z" itemprop="datePublished">2020-12-26</time>
@@ -204,7 +205,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2020/11/25/hello-world/" class="title">Hello world</a>
+                <a href="/2020/11/25/hello-world/" class="title">欢迎</a>
               </p>
               <p class="item-date">
                 <time datetime="2020-11-25T08:55:19.000Z" itemprop="datePublished">2020-11-25</time>
@@ -240,14 +241,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-mysql" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Mysql" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      mysql
+      数据库索引的底层原理
     </h1>
   
 
@@ -255,16 +256,21 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/12/26/mysql/" class="article-date">
+	<a href="/2020/12/26/Mysql/" class="article-date">
 	  <time datetime="2020-12-26T08:49:31.000Z" itemprop="datePublished">2020-12-26</time>
 	</a>
 </span>
         
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/mysql/" rel="tag">mysql</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/26/mysql/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/26/Mysql/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
@@ -279,7 +285,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2020/12/26/mysql/" title="mysql" target="_blank" rel="external">http://example.com/2020/12/26/mysql/</a>
+      <a href="http://example.com/2020/12/26/Mysql/" title="数据库索引的底层原理" target="_blank" rel="external">http://example.com/2020/12/26/Mysql/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -327,7 +333,7 @@
     
     
     <li class="next">
-      <a href="/2020/11/25/hello-world/" title="Hello world"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/11/25/hello-world/" title="欢迎"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
