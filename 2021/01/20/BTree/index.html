@@ -17,22 +17,36 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>TianXuang</title>
-  <meta name="description" content="B树和B+树的基本介绍1.1 B树概念B树也称B-树,它是一颗多路平衡查找树。二叉树我想大家都不陌生，其实，B树和后面讲到的B+树也是从最简单的二叉树变换而来的，并没有什么神秘的地方，下面我们来看看B树的定义。  每个节点最多有m-1个关键字（可以存有的键值对）。 根节点最少可以只有1个关键字。 非根节点至少有m&#x2F;2个关键字。 每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左子树中的所有">
+  <title>B树和B+树的基本介绍 | TianXuang</title>
+  <meta name="description" content="B树和B+树的基本介绍1.1 B树概念B树也称B-树,它是一颗多路平衡查找树。二叉树我想大家都不陌生，其实，B树和后面讲到的B+树也是从最简单的二叉树变换而来的，并没有什么神秘的地方，下面我们来看看B树的定义。  每个节点最多有m-1个 关键字（可以存有的键值对）。  根节点最少可以只有1个 关键字。  非根节点至少有m&#x2F;2个 关键字。  每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java">
-<meta property="og:url" content="https://tianxuang.github.io/2021/01/20/BTree/index.html">
+<meta property="og:title" content="B树和B+树的基本介绍">
+<meta property="og:url" content="https://tianxuang.github.io/2021/01/20/btree/index.html">
 <meta property="og:site_name" content="java">
-<meta property="og:description" content="B树和B+树的基本介绍1.1 B树概念B树也称B-树,它是一颗多路平衡查找树。二叉树我想大家都不陌生，其实，B树和后面讲到的B+树也是从最简单的二叉树变换而来的，并没有什么神秘的地方，下面我们来看看B树的定义。  每个节点最多有m-1个关键字（可以存有的键值对）。 根节点最少可以只有1个关键字。 非根节点至少有m&#x2F;2个关键字。 每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左子树中的所有">
+<meta property="og:description" content="B树和B+树的基本介绍1.1 B树概念B树也称B-树,它是一颗多路平衡查找树。二叉树我想大家都不陌生，其实，B树和后面讲到的B+树也是从最简单的二叉树变换而来的，并没有什么神秘的地方，下面我们来看看B树的定义。  每个节点最多有m-1个 关键字（可以存有的键值对）。  根节点最少可以只有1个 关键字。  非根节点至少有m&#x2F;2个 关键字。  每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tianxuang.github.io/Users/tianxuan--guangbin/Desktop/blog/blog/public/images/image/b-tree1.png">
-<meta property="article:published_time" content="2021-01-20T14:59:43.983Z">
-<meta property="article:modified_time" content="2021-01-20T15:16:37.738Z">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree1.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree2.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree3.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree4.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree5.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree6.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree7.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree8.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree9.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree10.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree11.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree12.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree13.png">
+<meta property="og:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree14.png">
+<meta property="article:published_time" content="2021-01-20T15:34:34.000Z">
+<meta property="article:modified_time" content="2021-02-01T14:23:23.367Z">
 <meta property="article:author" content="迷途小书童">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tianxuang.github.io/Users/tianxuan--guangbin/Desktop/blog/blog/public/images/image/b-tree1.png">
+<meta name="twitter:image" content="https://tianxuang.github.io/2021/01/20/btree/b-tree1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://tianxuang.github.io/2021/01/20/BTree/index.html">
+  <link rel="canonical" href="https://tianxuang.github.io/2021/01/20/btree/index.html">
   
     <link rel="alternate" href="/atom.xml" title="java" type="application/atom+xml">
   
@@ -155,7 +169,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -165,7 +179,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/java/" style="font-size: 13px;">java</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a>
+      <a href="/tags/java/" style="font-size: 13px;">java</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a>
     </div>
   </div>
 
@@ -193,10 +207,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2021/01/20/BTree/" class="title">(no title)</a>
+                <a href="/2021/01/20/btree/" class="title">B树和B+树的基本介绍</a>
               </p>
               <p class="item-date">
-                <time datetime="2021-01-20T14:59:43.983Z" itemprop="datePublished">2021-01-20</time>
+                <time datetime="2021-01-20T15:34:34.000Z" itemprop="datePublished">2021-01-20</time>
               </p>
             </div>
           </li>
@@ -259,23 +273,36 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-BTree" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-btree" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      B树和B+树的基本介绍
+    </h1>
+  
+
       
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/01/20/BTree/" class="article-date">
-	  <time datetime="2021-01-20T14:59:43.983Z" itemprop="datePublished">2021-01-20</time>
+	<a href="/2021/01/20/btree/" class="article-date">
+	  <time datetime="2021-01-20T15:34:34.000Z" itemprop="datePublished">2021-01-20</time>
 	</a>
 </span>
         
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/mysql/" rel="tag">mysql</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/20/BTree/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/20/btree/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
@@ -283,22 +310,87 @@
       
         <h3 id="B树和B-树的基本介绍"><a href="#B树和B-树的基本介绍" class="headerlink" title="B树和B+树的基本介绍"></a>B树和B+树的基本介绍</h3><h4 id="1-1-B树概念"><a href="#1-1-B树概念" class="headerlink" title="1.1 B树概念"></a>1.1 B树概念</h4><p>B树也称B-树,它是一颗多路平衡查找树。二叉树我想大家都不陌生，其实，B树和后面讲到的B+树也是从最简单的二叉树变换而来的，并没有什么神秘的地方，下面我们来看看B树的定义。</p>
 <ul>
-<li>每个节点最多有m-1个<strong>关键字</strong>（可以存有的键值对）。</li>
-<li>根节点最少可以只有1个<strong>关键字</strong>。</li>
-<li>非根节点至少有m/2个<strong>关键字</strong>。</li>
-<li>每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左子树中的所有关键字都小于它，而右子树中的所有关键字都大于它。</li>
-<li>所有叶子节点都位于同一层，或者说根节点到每个叶子节点的长度都相同。</li>
-<li>每个节点都存有索引和数据，也就是对应的key和value。</li>
+<li><p>每个节点最多有m-1个 <strong><em>关键字</em></strong>（可以存有的键值对）。</p>
+</li>
+<li><p>根节点最少可以只有1个 <strong><em>关键字</em></strong>。</p>
+</li>
+<li><p>非根节点至少有m/2个 <strong><em>关键字</em></strong>。</p>
+</li>
+<li><p>每个节点中的关键字都按照从小到大的顺序排列，每个关键字的左子树中的所有关键字都小于它，而右子树中的所有关键字都大于它。</p>
+</li>
+<li><p>所有叶子节点都位于同一层，或者说根节点到每个叶子节点的长度都相同。</p>
+</li>
+<li><p>每个节点都存有索引和数据，也就是对应的key和value。</p>
+</li>
 </ul>
-<p>所以，根节点的<strong>关键字</strong>数量范围：<code>1 &lt;= k &lt;= m-1</code>，非根节点的<strong>关键字</strong>数量范围：<code>m/2 &lt;= k &lt;= m-1</code>。</p>
+<p>所以，根节点的*<strong>关键字**<em>数量范围：<code>1 &lt;= k &lt;= m-1</code>，非根节点的</em></strong>关键字***数量范围：<code>m/2 &lt;= k &lt;= m-1</code>。</p>
 <p>另外，我们需要注意一个概念，描述一颗B树时需要指定它的阶数，阶数表示了一个节点最多有多少个孩子节点，一般用字母m表示阶数。</p>
 <p>我们再举个例子来说明一下上面的概念，比如这里有一个5阶的B树，根节点数量范围：1 &lt;= k &lt;= 4，非根节点数量范围：2 &lt;= k &lt;= 4。</p>
-<h4 id="1-2-B树插入"><a href="#1-2-B树插入" class="headerlink" title="1.2 B树插入"></a>1.2 B树插入</h4><p>插入的时候，我们需要记住一个规则：<strong>判断当前结点key的个数是否小于等于m-1，如果满足，直接插入即可，如果不满足，将节点的中间的key将这个节点分为左右两部分，中间的节点放到父节点中即可。</strong></p>
+<h4 id="1-2-B树插入"><a href="#1-2-B树插入" class="headerlink" title="1.2 B树插入"></a>1.2 B树插入</h4><p>插入的时候，我们需要记住一个规则： <strong><em>判断当前结点key的个数是否小于等于m-1，如果满足，直接插入即可，如果不满足，将节点的中间的key将这个节点分为左右两部分，中间的节点放到父节点中即可。</em></strong></p>
 <p>例子：在5阶B树中，结点最多有4个key,最少有2个key（注意：下面的节点统一用一个节点表示key和value）。</p>
 <ul>
 <li>插入18，70，50,40</li>
 </ul>
-<p><img src="/Users/tianxuan--guangbin/Desktop/blog/blog/public/images/image/b-tree1.png" alt="alt"></p>
+<p><img src="/2021/01/20/btree/b-tree1.png" alt="alt"></p>
+<ul>
+<li>插入22</li>
+</ul>
+<p><img src="/2021/01/20/btree/b-tree2.png" alt="alt "></p>
+<p>插入22时，发现这个节点的关键字已经大于4了，所以需要进行分裂，分裂的规则在上面已经讲了，分裂之后，如下。</p>
+<p><img src="/2021/01/20/btree/b-tree3.png" alt="alt "></p>
+<ul>
+<li>接着插入23，25，39</li>
+</ul>
+<p><img src="/2021/01/20/btree/b-tree4.png" alt="alt"></p>
+<p>分裂，得到下面的。</p>
+<p><img src="/2021/01/20/btree/b-tree5.png" alt="alt"></p>
+<h4 id="1-3-B树的删除操作"><a href="#1-3-B树的删除操作" class="headerlink" title="1.3 B树的删除操作"></a>1.3 B树的删除操作</h4><p>B树的删除操作相对于插入操作是相对复杂一些的，但是，你知道记住几种情况，一样可以很轻松的掌握的。</p>
+<ul>
+<li><p>现在有一个初始状态是下面这样的B树，然后进行删除操作。</p>
+<p><img src="/2021/01/20/btree/b-tree6.png" alt="alt "></p>
+</li>
+<li><p>删除15，这种情况是删除叶子节点的元素，如果删除之后，节点数还是大于<code>m/2</code>，这种情况只要直接删除即可。</p>
+</li>
+</ul>
+<p><img src="/2021/01/20/btree/b-tree7.png" alt="alt "></p>
+<p><img src="/2021/01/20/btree/b-tree8.png" alt="alt"></p>
+<ul>
+<li><p>接着，我们把22删除，这种情况的规则：22是非叶子节点，<strong>对于非叶子节点的删除，我们需要用后继key（元素）覆盖要删除的key，然后在后继key所在的子支中删除该后继key</strong>。对于删除22，需要将后继元素24移到被删除的22所在的节点。</p>
+<p><img src="/2021/01/20/btree/b-tree9.png" alt="alt"></p>
+</li>
+</ul>
+<p><img src="/2021/01/20/btree/b-tree10.png" alt="alt"></p>
+<p>此时发现26所在的节点只有一个元素，小于2个（m/2），这个节点不符合要求，这时候的规则（向兄弟节点借元素）：<strong>如果删除叶子节点，如果删除元素后元素个数少于（m/2），并且它的兄弟节点的元素大于（m/2），也就是说兄弟节点的元素比最少值m/2还多，将先将父节点的元素移到该节点，然后将兄弟节点的元素再移动到父节点</strong>。这样就满足要求了。</p>
+<p>我们看看操作过程就更加明白了。</p>
+<p><img src="/2021/01/20/btree/b-tree11.png" alt="alt"></p>
+<p><img src="/2021/01/20/btree/b-tree12.png" alt="alt"></p>
+<ul>
+<li>接着删除28，<strong>删除叶子节点</strong>，删除后不满足要求，所以，我们需要考虑向兄弟节点借元素，但是，兄弟节点也没有多的节点（2个），借不了，怎么办呢？如果遇到这种情况，<strong>首先，还是将先将父节点的元素移到该节点，然后，将当前节点及它的兄弟节点中的key合并，形成一个新的节点</strong>。</li>
+</ul>
+<p><img src="/2021/01/20/btree/b-tree13.png" alt="alt"></p>
+<p><img src="/2021/01/20/btree/b-tree14.png" alt="alt"></p>
+<p>删除就只有上面的几种情况，根据不同的情况进行删除即可。</p>
+<h3 id="2-B-树"><a href="#2-B-树" class="headerlink" title="2 B+树"></a>2 B+树</h3><h4 id="2-1-B-树概述"><a href="#2-1-B-树概述" class="headerlink" title="2.1 B+树概述"></a>2.1 B+树概述</h4><p>B+树其实和B树是非常相似的，我们首先看看<strong>相同点</strong>。</p>
+<ul>
+<li>根节点至少一个元素</li>
+<li>非根节点元素范围：m/2 &lt;= k &lt;= m-1</li>
+</ul>
+<p><strong>不同点</strong>。</p>
+<ul>
+<li>B+树有两种类型的节点：内部结点（也称索引结点）和叶子结点。内部节点就是非叶子节点，内部节点不存储数据，只存储索引，数据都存储在叶子节点。</li>
+<li>内部结点中的key都按照从小到大的顺序排列，对于内部结点中的一个key，左树中的所有key都小于它，右子树中的key都大于等于它。叶子结点中的记录也按照key的大小排列。</li>
+<li>每个叶子结点都存有相邻叶子结点的指针，叶子结点本身依关键字的大小自小而大顺序链接。</li>
+<li>父节点存有右孩子的第一个元素的索引。</li>
+</ul>
+<h4 id="2-2-插入操作"><a href="#2-2-插入操作" class="headerlink" title="2.2 插入操作"></a>2.2 插入操作</h4><p>对于插入操作很简单，只需要记住一个技巧即可：<strong>当节点元素数量大于m-1的时候，按中间元素分裂成左右两部分，中间元素分裂到父节点当做索引存储，但是，本身中间元素还是分裂右边这一部分的</strong>。</p>
+<p>下面以一颗5阶B+树的插入过程为例，5阶B+树的节点最少2个元素，最多4个元素。</p>
+<h4 id="2-3-删除操作"><a href="#2-3-删除操作" class="headerlink" title="2.3 删除操作"></a>2.3 删除操作</h4><p>对于删除操作是比B树简单一些的，因为<strong>叶子节点有指针的存在，向兄弟节点借元素时，不需要通过父节点了，而是可以直接通过兄弟节移动即可（前提是兄弟节点的元素大于m/2），然后更新父节点的索引；如果兄弟节点的元素不大于m/2（兄弟节点也没有多余的元素），则将当前节点和兄弟节点合并，并且删除父节点中的key</strong></p>
+<h3 id="3-B树和B-树总结"><a href="#3-B树和B-树总结" class="headerlink" title="3 B树和B+树总结"></a>3 B树和B+树总结</h3><p>B+树相对于B树有一些自己的优势，可以归结为下面几点。</p>
+<ul>
+<li>单一节点存储的元素更多，使得查询的IO次数更少，所以也就使得它更适合做为数据库MySQL的底层数据结构了。</li>
+<li>所有的查询都要查找到叶子节点，查询性能是稳定的，而B树，每个节点都可以查找到数据，所以不稳定。</li>
+<li>所有的叶子节点形成了一个有序链表，更加便于查找</li>
+</ul>
 
       
     </div>
@@ -308,7 +400,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://tianxuang.github.io/2021/01/20/BTree/" title="" target="_blank" rel="external">https://tianxuang.github.io/2021/01/20/BTree/</a>
+      <a href="https://tianxuang.github.io/2021/01/20/btree/" title="B树和B+树的基本介绍" target="_blank" rel="external">https://tianxuang.github.io/2021/01/20/btree/</a>
     </li>
     
     <li class="post-copyright-license">
