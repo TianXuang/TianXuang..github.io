@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>java快速失败机制&amp;失败安全机制 | TianXuang</title>
-  <meta name="description" content="Java集合-快速失败现象：在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了增加、删除、修改操作，则会抛出ConcurrentModificationException。 原理：迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个 modCount 变量。集合在被遍历期间如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext()&#x2F;next()遍历下">
+  <title>关于扇区、簇、块、页等概念的区分 | TianXuang</title>
+  <meta name="description" content="1、什么是扇区扇区，是指磁盘上划分的区域。磁盘上的每个磁道被等分为若干个弧段，这些弧段便是磁盘的扇区，硬盘的读写以扇区为基本单位。传统上，一个扇区的大小是512字节，CD-ROM和DVD-ROM的扇区大小为2048字节。较新的硬盘（HDD）使用4096字节（4 KiB）扇区，这些扇区称为高级格式（AF）2、什么是块和簇由于扇区的空间比较小且数目众多，在寻址时比较困难，所以操作系统就将多个的扇区组合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java快速失败机制&amp;失败安全机制">
-<meta property="og:url" content="https://tianxuang.github.io/2020/11/25/hexo/index.html">
+<meta property="og:title" content="关于扇区、簇、块、页等概念的区分">
+<meta property="og:url" content="https://tianxuang.github.io/2021/02/01/blockExplain/index.html">
 <meta property="og:site_name" content="java">
-<meta property="og:description" content="Java集合-快速失败现象：在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了增加、删除、修改操作，则会抛出ConcurrentModificationException。 原理：迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个 modCount 变量。集合在被遍历期间如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext()&#x2F;next()遍历下">
+<meta property="og:description" content="1、什么是扇区扇区，是指磁盘上划分的区域。磁盘上的每个磁道被等分为若干个弧段，这些弧段便是磁盘的扇区，硬盘的读写以扇区为基本单位。传统上，一个扇区的大小是512字节，CD-ROM和DVD-ROM的扇区大小为2048字节。较新的硬盘（HDD）使用4096字节（4 KiB）扇区，这些扇区称为高级格式（AF）2、什么是块和簇由于扇区的空间比较小且数目众多，在寻址时比较困难，所以操作系统就将多个的扇区组合">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-25T07:39:26.000Z">
-<meta property="article:modified_time" content="2020-12-27T07:27:38.622Z">
+<meta property="article:published_time" content="2021-02-01T15:04:19.000Z">
+<meta property="article:modified_time" content="2021-02-01T15:07:59.727Z">
 <meta property="article:author" content="迷途小书童">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://tianxuang.github.io/2020/11/25/hexo/index.html">
+  <link rel="canonical" href="https://tianxuang.github.io/2021/02/01/blockExplain/index.html">
   
     <link rel="alternate" href="/atom.xml" title="java" type="application/atom+xml">
   
@@ -273,14 +273,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-hexo" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-blockExplain" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      java快速失败机制&amp;失败安全机制
+      关于扇区、簇、块、页等概念的区分
     </h1>
   
 
@@ -288,35 +288,27 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/11/25/hexo/" class="article-date">
-	  <time datetime="2020-11-25T07:39:26.000Z" itemprop="datePublished">2020-11-25</time>
+	<a href="/2021/02/01/blockExplain/" class="article-date">
+	  <time datetime="2021-02-01T15:04:19.000Z" itemprop="datePublished">2021-02-01</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/java/" rel="tag">java</a>
+	<a class="article-tag-link-link" href="/tags/mysql/" rel="tag">mysql</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/25/hexo/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/01/blockExplain/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="Java集合-快速失败"><a href="#Java集合-快速失败" class="headerlink" title="Java集合-快速失败"></a>Java集合-快速失败</h2><p><strong>现象：</strong>在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了增加、删除、修改操作，则会抛出ConcurrentModificationException。</p>
-<p><strong>原理：</strong>迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个 modCount 变量。集合在被遍历期间如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext()/next()遍历下一个元素之前，都会检测modCount变量是否为expectedmodCount值，是的话就返回遍历；否则抛出ConcurrentModificationException异常，终止遍历。</p>
-<p><strong>注意：</strong>这里异常的抛出条件是检测到 modCount！=expectedmodCount 这个条件。如果集合发生变化时修改modCount值刚好又设置为了expectedmodCount值，则异常不会抛出。因此，不能依赖于这个异常是否抛出而进行并发操作的编程，这个异常只建议用于检测并发修改的bug。</p>
-<p><strong>场景：</strong>java.util包下的集合类都是快速失败的，不能在多线程下发生并发修改（迭代过程中被修改）。</p>
-<h2 id="Java集合-失败安全"><a href="#Java集合-失败安全" class="headerlink" title="Java集合-失败安全"></a>Java集合-失败安全</h2><p><strong>现象：</strong>采用失败安全机制的集合容器，在遍历时不是直接在集合内容上访问的，而是先复制原有集合内容，在拷贝的集合上进行遍历。</p>
-<p><strong>原理：</strong>由于迭代时是对原集合的拷贝进行遍历，所以在遍历过程中对原集合所作的修改并不能被迭代器检测到，所以不会触发ConcurrentModificationException。</p>
-<p><strong>缺点：</strong>基于拷贝内容的优点是避免了ConcurrentModificationException，但同样地，迭代器并不能访问到修改后的内容，即：迭代器遍历的是开始遍历那一刻拿到的集合拷贝，在遍历期间原集合发生的修改迭代器是不知道的。这也就是他的缺点，同时，由于是需要拷贝的，所以比较吃内存。</p>
-<p><strong>场景：</strong>java.util.concurrent包下的容器都是安全失败，可以在多线程下并发使用，并发修改。</p>
-
+        <h5 id="1、什么是扇区"><a href="#1、什么是扇区" class="headerlink" title="1、什么是扇区"></a>1、什么是扇区</h5><h6 id="扇区，是指磁盘上划分的区域。磁盘上的每个磁道被等分为若干个弧段，这些弧段便是磁盘的扇区，硬盘的读写以扇区为基本单位。传统上，一个扇区的大小是512字节，CD-ROM和DVD-ROM的扇区大小为2048字节。较新的硬盘（HDD）使用4096字节（4-KiB）扇区，这些扇区称为高级格式（AF）"><a href="#扇区，是指磁盘上划分的区域。磁盘上的每个磁道被等分为若干个弧段，这些弧段便是磁盘的扇区，硬盘的读写以扇区为基本单位。传统上，一个扇区的大小是512字节，CD-ROM和DVD-ROM的扇区大小为2048字节。较新的硬盘（HDD）使用4096字节（4-KiB）扇区，这些扇区称为高级格式（AF）" class="headerlink" title="扇区，是指磁盘上划分的区域。磁盘上的每个磁道被等分为若干个弧段，这些弧段便是磁盘的扇区，硬盘的读写以扇区为基本单位。传统上，一个扇区的大小是512字节，CD-ROM和DVD-ROM的扇区大小为2048字节。较新的硬盘（HDD）使用4096字节（4 KiB）扇区，这些扇区称为高级格式（AF）"></a>扇区，是指磁盘上划分的区域。<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A3%81%E7%9B%98/2842227">磁盘</a>上的每个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A3%81%E9%81%93/3641860">磁道</a>被等分为若干个弧段，这些弧段便是磁盘的扇区，硬盘的读写以扇区为基本单位。传统上，一个扇区的大小是<strong>512</strong>字节，CD-ROM和DVD-ROM的扇区大小为<strong>2048</strong>字节。较新的硬盘（HDD）使用<strong>4096</strong>字节（4 KiB）扇区，这些扇区称为高级格式（AF）</h6><h5 id="2、什么是块和簇"><a href="#2、什么是块和簇" class="headerlink" title="2、什么是块和簇"></a>2、什么是块和簇</h5><h6 id="由于扇区的空间比较小且数目众多，在寻址时比较困难，所以操作系统就将多个的扇区组合在一起，形成一个更大的单位，再对这个单位进行整体的操作。这个单位，在Windows下，FAT，FAT32和NTFS-文件系统中叫做簇（cluster）；在Linux下如Ext4等文件系统中叫做块（block）。每个簇或者块可以包括2、4、8、16、32、64…2的n次方个扇区。块（Block）是文件系统存取数据的最小单位，一般大小是4KB（这个值可以修改，在格式化分区的时候修改）。8个扇区"><a href="#由于扇区的空间比较小且数目众多，在寻址时比较困难，所以操作系统就将多个的扇区组合在一起，形成一个更大的单位，再对这个单位进行整体的操作。这个单位，在Windows下，FAT，FAT32和NTFS-文件系统中叫做簇（cluster）；在Linux下如Ext4等文件系统中叫做块（block）。每个簇或者块可以包括2、4、8、16、32、64…2的n次方个扇区。块（Block）是文件系统存取数据的最小单位，一般大小是4KB（这个值可以修改，在格式化分区的时候修改）。8个扇区" class="headerlink" title="由于扇区的空间比较小且数目众多，在寻址时比较困难，所以操作系统就将多个的扇区组合在一起，形成一个更大的单位，再对这个单位进行整体的操作。这个单位，在Windows下，FAT，FAT32和NTFS 文件系统中叫做簇（cluster）；在Linux下如Ext4等文件系统中叫做块（block）。每个簇或者块可以包括2、4、8、16、32、64…2的n次方个扇区。块（Block）是文件系统存取数据的最小单位，一般大小是4KB（这个值可以修改，在格式化分区的时候修改）。8个扇区"></a>由于扇区的空间比较小且数目众多，在寻址时比较困难，所以操作系统就将多个的扇区组合在一起，形成一个更大的单位，再对这个单位进行整体的操作。这个单位，在Windows下，FAT，<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=FAT32&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">FAT32</a>和NTFS 文件系统中叫做簇（cluster）；在Linux下如Ext4等文件系统中叫做块（block）。每个簇或者块可以包括2、4、8、16、32、64…2的n次方个扇区。块（Block）是文件系统存取数据的最小单位，一般大小是4KB（这个值可以修改，在格式化分区的时候修改）。8个扇区</h6><h5 id="3、什么是柱面"><a href="#3、什么是柱面" class="headerlink" title="3、什么是柱面"></a>3、什么是柱面</h5><h6 id="硬盘通常由重叠的一组盘片构成，每个盘面都被划分为数目相等的磁道，并从外缘的“0”开始编号，具有相同编号的磁道形成一个圆柱，称之为磁盘的柱面。磁盘的柱面数与一个盘面上的磁道数是相等的。由于每个盘面都有自己的磁头，因此，盘面数等于总的磁头数。"><a href="#硬盘通常由重叠的一组盘片构成，每个盘面都被划分为数目相等的磁道，并从外缘的“0”开始编号，具有相同编号的磁道形成一个圆柱，称之为磁盘的柱面。磁盘的柱面数与一个盘面上的磁道数是相等的。由于每个盘面都有自己的磁头，因此，盘面数等于总的磁头数。" class="headerlink" title="硬盘通常由重叠的一组盘片构成，每个盘面都被划分为数目相等的磁道，并从外缘的“0”开始编号，具有相同编号的磁道形成一个圆柱，称之为磁盘的柱面。磁盘的柱面数与一个盘面上的磁道数是相等的。由于每个盘面都有自己的磁头，因此，盘面数等于总的磁头数。"></a>硬盘通常由重叠的一组盘片构成，每个盘面都被划分为数目相等的磁道，并从外缘的“0”开始编号，具有相同编号的磁道形成一个圆柱，称之为磁盘的柱面。磁盘的柱面数与一个盘面上的磁道数是相等的。由于每个盘面都有自己的磁头，因此，<strong>盘面数</strong>等于总的磁头数。</h6><h6 id="所有盘面上的同一磁道构成一个圆柱，称作柱面。数据的读-写按柱面从外向内进行，而不是按盘面进行。定位时，首先确定柱面，再确定盘面，然后确定扇区。之后所有磁头一起定位到指定柱面，再旋转盘面使指定扇区位于磁头之下。写数据时，当前柱面的当前磁道写满后，开始在当前柱面的下一个磁道写入，只有当前柱面全部写满后，才将磁头移动到下一个柱面。在对硬盘分区时，各个分区也是以柱面为单位划分的，即从什么柱面到什么柱面；不存在一个柱面同属于多个分区"><a href="#所有盘面上的同一磁道构成一个圆柱，称作柱面。数据的读-写按柱面从外向内进行，而不是按盘面进行。定位时，首先确定柱面，再确定盘面，然后确定扇区。之后所有磁头一起定位到指定柱面，再旋转盘面使指定扇区位于磁头之下。写数据时，当前柱面的当前磁道写满后，开始在当前柱面的下一个磁道写入，只有当前柱面全部写满后，才将磁头移动到下一个柱面。在对硬盘分区时，各个分区也是以柱面为单位划分的，即从什么柱面到什么柱面；不存在一个柱面同属于多个分区" class="headerlink" title="所有盘面上的同一磁道构成一个圆柱，称作柱面。数据的读/写按柱面从外向内进行，而不是按盘面进行。定位时，首先确定柱面，再确定盘面，然后确定扇区。之后所有磁头一起定位到指定柱面，再旋转盘面使指定扇区位于磁头之下。写数据时，当前柱面的当前磁道写满后，开始在当前柱面的下一个磁道写入，只有当前柱面全部写满后，才将磁头移动到下一个柱面。在对硬盘分区时，各个分区也是以柱面为单位划分的，即从什么柱面到什么柱面；不存在一个柱面同属于多个分区"></a>所有盘面上的同一磁道构成一个圆柱，称作柱面。数据的读/写按柱面从外向内进行，而不是按盘面进行。定位时，首先确定柱面，再确定盘面，然后确定扇区。之后所有磁头一起定位到指定柱面，再旋转盘面使指定扇区位于磁头之下。写数据时，当前柱面的当前磁道写满后，开始在当前柱面的下一个磁道写入，只有当前柱面全部写满后，才将磁头移动到下一个柱面。在对硬盘分区时，各个分区也是以柱面为单位划分的，即从什么柱面到什么柱面；不存在一个柱面同属于多个分区</h6>
       
     </div>
     <div class="article-footer">
@@ -325,7 +317,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://tianxuang.github.io/2020/11/25/hexo/" title="java快速失败机制&amp;失败安全机制" target="_blank" rel="external">https://tianxuang.github.io/2020/11/25/hexo/</a>
+      <a href="https://tianxuang.github.io/2021/02/01/blockExplain/" title="关于扇区、簇、块、页等概念的区分" target="_blank" rel="external">https://tianxuang.github.io/2021/02/01/blockExplain/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -371,10 +363,10 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/11/25/hello-world/" title="欢迎"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
     
+    <li class="next">
+      <a href="/2021/01/20/btree/" title="B树和B+树的基本介绍"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
   </ul>
