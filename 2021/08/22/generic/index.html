@@ -17,21 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Mysql的事务详解 | TianXuang</title>
-  <meta name="description" content="数据库事务提到事务，你肯定不陌生，和数据库打交道的时候，我们总是会用到事务。最经典的例子就是转账，你要给朋友小王转100块钱，而此时你的银行卡只有100块钱。 转账过程具体到程序里会有一系列的操作，比如查询余额、做加减法、更新余额等，这些操作必须保证是一体的，不然等程序查完之后，还没做减法之前，你这100块钱，完全可以借着这个时间差再查一次，然后再给另外一个朋友转账，如果银行这么整，不就乱了么？这">
+  <title>泛型基础 | TianXuang</title>
+  <meta name="description" content="泛型基础1、泛型的背景和概念 背景：Java推出泛型以前，程序员可以构建一个元素类型为Object的集合，该集合能够储存任意数据类型对象，而在使用该集合的过程中，需要程序员明确知道储存元素的数据类型，否则很容易引发ClassCastException异常，所以推出了泛型解决这一问题。  概念： Java泛型（generics）是JDK5中引入的一个新特性，泛型是提供了编译时类型安全监测机制，该机制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mysql的事务详解">
-<meta property="og:url" content="https://tianxuang.github.io/2020/12/27/transaction/index.html">
+<meta property="og:title" content="泛型基础">
+<meta property="og:url" content="https://tianxuang.github.io/2021/08/22/generic/index.html">
 <meta property="og:site_name" content="java">
-<meta property="og:description" content="数据库事务提到事务，你肯定不陌生，和数据库打交道的时候，我们总是会用到事务。最经典的例子就是转账，你要给朋友小王转100块钱，而此时你的银行卡只有100块钱。 转账过程具体到程序里会有一系列的操作，比如查询余额、做加减法、更新余额等，这些操作必须保证是一体的，不然等程序查完之后，还没做减法之前，你这100块钱，完全可以借着这个时间差再查一次，然后再给另外一个朋友转账，如果银行这么整，不就乱了么？这">
+<meta property="og:description" content="泛型基础1、泛型的背景和概念 背景：Java推出泛型以前，程序员可以构建一个元素类型为Object的集合，该集合能够储存任意数据类型对象，而在使用该集合的过程中，需要程序员明确知道储存元素的数据类型，否则很容易引发ClassCastException异常，所以推出了泛型解决这一问题。  概念： Java泛型（generics）是JDK5中引入的一个新特性，泛型是提供了编译时类型安全监测机制，该机制">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-27T07:14:42.000Z">
-<meta property="article:modified_time" content="2020-12-27T07:57:52.198Z">
+<meta property="og:image" content="https://tianxuang.github.io/generic/gen_1.jpg">
+<meta property="article:published_time" content="2021-08-22T09:09:03.000Z">
+<meta property="article:modified_time" content="2021-08-22T12:24:03.221Z">
 <meta property="article:author" content="迷途小书童">
-<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianxuang.github.io/generic/gen_1.jpg">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://tianxuang.github.io/2020/12/27/transaction/index.html">
+  <link rel="canonical" href="https://tianxuang.github.io/2021/08/22/generic/index.html">
   
     <link rel="alternate" href="/atom.xml" title="java" type="application/atom+xml">
   
@@ -273,14 +275,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-transaction" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-generic" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Mysql的事务详解
+      泛型基础
     </h1>
   
 
@@ -288,59 +290,61 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/12/27/transaction/" class="article-date">
-	  <time datetime="2020-12-27T07:14:42.000Z" itemprop="datePublished">2020-12-27</time>
+	<a href="/2021/08/22/generic/" class="article-date">
+	  <time datetime="2021-08-22T09:09:03.000Z" itemprop="datePublished">2021-08-22</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/mysql/" rel="tag">mysql</a>
+	<a class="article-tag-link-link" href="/tags/java/" rel="tag">java</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/27/transaction/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/08/22/generic/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="数据库事务"><a href="#数据库事务" class="headerlink" title="数据库事务"></a>数据库事务</h2><p>提到事务，你肯定不陌生，和数据库打交道的时候，我们总是会用到事务。最经典的例子就是转账，你要给朋友小王转100块钱，而此时你的银行卡只有100块钱。</p>
-<p>转账过程具体到程序里会有一系列的操作，比如查询余额、做加减法、更新余额等，这些操作必须保证是一体的，不然等程序查完之后，还没做减法之前，你这100块钱，完全可以借着这个时间差再查一次，然后再给另外一个朋友转账，如果银行这么整，不就乱了么？这时就要用到“事务”这个概念了。</p>
-<h5 id="简单来说，事务就是要保证一组数据库操作，要么全部成功，要么全部失败。"><a href="#简单来说，事务就是要保证一组数据库操作，要么全部成功，要么全部失败。" class="headerlink" title="简单来说，事务就是要保证一组数据库操作，要么全部成功，要么全部失败。"></a>简单来说，事务就是要保证一组数据库操作，要么全部成功，要么全部失败。</h5><p>在MySQL中，事务支持是在引擎层实现的。你现在知道，MySQL是一个支持多引擎的系统，但并不是所有的引擎都支持事务。比如MySQL原生的MyISAM引擎就不支持事务，这也是MyISAM被InnoDB取代的重要原因之一。</p>
-<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><ol>
-<li><h5 id="读未提交-READ-UNCOMMITTED"><a href="#读未提交-READ-UNCOMMITTED" class="headerlink" title="读未提交(READ UNCOMMITTED)"></a>读未提交(READ UNCOMMITTED)</h5><p>  一个事务还没提交时，它做的变更就能被别的事务看到</p>
-<p><strong>缺点：可能产生脏读、不可重复读、幻读</strong></p>
+        <h3 id="泛型基础"><a href="#泛型基础" class="headerlink" title="泛型基础"></a>泛型基础</h3><h4 id="1、泛型的背景和概念"><a href="#1、泛型的背景和概念" class="headerlink" title="1、泛型的背景和概念"></a>1、泛型的背景和概念</h4><ul>
+<li><p><strong>背景：</strong>Java推出泛型以前，程序员可以构建一个元素类型为Object的集合，该集合能够储存任意数据类型对象，而在使用该集合的过程中，需要程序员明确知道储存元素的数据类型，否则很容易引发ClassCastException异常，所以推出了泛型解决这一问题。</p>
 </li>
-<li><h5 id="读已提交-READ-COMMITTED"><a href="#读已提交-READ-COMMITTED" class="headerlink" title="读已提交(READ COMMITTED)"></a>读已提交(READ COMMITTED)</h5><p> 一个事务提交之后，它做的变更才会被其他事务看到 </p>
-<p><strong>缺点：避免了脏读，可能产生不可重复读、幻读</strong></p>
+<li><p><strong>概念：</strong> Java泛型（generics）是JDK5中引入的一个新特性，泛型是提供了编译时类型安全监测机制，该机制允许我们在编译时检测到非法的数据类型结构。</p>
+<p>泛型的本质就是参数化类型，也就是所操作的数据类型被指定为一个参数。</p>
 </li>
-<li><h5 id="可重复读-REPEATABLE-READ-（mysql默认隔离级别）"><a href="#可重复读-REPEATABLE-READ-（mysql默认隔离级别）" class="headerlink" title="可重复读(REPEATABLE READ)（mysql默认隔离级别）"></a>可重复读(REPEATABLE READ)（mysql默认隔离级别）</h5><p>一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的</p>
-<p><strong>避免了脏读，不可重复读。通过区间锁技术避免了幻读</strong></p>
+<li><p><strong>优势：</strong> 1、类型安全检测 2、消除了强制类型转换</p>
 </li>
-<li><h5 id="串行化-SERIALIZABLE"><a href="#串行化-SERIALIZABLE" class="headerlink" title="串行化(SERIALIZABLE)"></a>串行化(SERIALIZABLE)</h5></li>
-</ol>
-<p>​         顾名思义是对于同一行记录，“写”会加“写锁”，“读”会加“读锁”。当出现读写锁冲突的时候，后访问的事务必   须等前一个事务执行完成，才能继续执行</p>
-<p><strong>串行化可以避免所有可能出现的并发异常,但是会极大的降低系统的并发处理能力</strong></p>
-<h2 id="常见的并发问题"><a href="#常见的并发问题" class="headerlink" title="常见的并发问题"></a>常见的并发问题</h2><ol>
-<li><h5 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h5><p>一个事务读取了另一个事务未提交的数据</p>
+</ul>
+<h4 id="2、泛型类"><a href="#2、泛型类" class="headerlink" title="2、泛型类"></a>2、泛型类</h4><h5 id="2-1-泛型类的注意事项"><a href="#2-1-泛型类的注意事项" class="headerlink" title="2.1 泛型类的注意事项"></a>2.1 泛型类的注意事项</h5><p>1.不能用基本数据类型实例化类型参数</p>
+<p>2.运行时候类型检查不适用于泛型</p>
+<p>3.不能实例化泛型类型的数组</p>
+<p>4.静态方法不能使用类上下文中定义的类型参数</p>
+<p>5.泛型在异常中的使用，不能继承异常基类</p>
+<p>6.类型擦出冲突</p>
+<p>7.另一个泛型原则</p>
+<h5 id="2-2-从泛型类派生子类"><a href="#2-2-从泛型类派生子类" class="headerlink" title="2.2 从泛型类派生子类"></a>2.2 从泛型类派生子类</h5><ul>
+<li>子类也是泛型类，子类和父类的泛型类型要一致</li>
+<li>子类不是泛型类，父类要明确泛型的数据类型</li>
+</ul>
+<h5 id="2-3泛型接口"><a href="#2-3泛型接口" class="headerlink" title="2.3泛型接口"></a>2.3泛型接口</h5><ul>
+<li>实现类是泛型类，实现类和接口类型需保持一致</li>
+<li>实现类不是泛型类，需要明确实现泛型接口的数据类型</li>
+</ul>
+<h5 id="2-4-泛型方法"><a href="#2-4-泛型方法" class="headerlink" title="2.4 泛型方法"></a>2.4 泛型方法</h5><ul>
+<li>泛型方法能使方法独立于类而产生变化</li>
+<li>如果static方法要使用泛型能力，就必须使其成为泛型方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> * 泛型方法的基本介绍</span><br><span class="line"> * <span class="meta">@param</span> tClass 传入的泛型实参</span><br><span class="line"> * <span class="meta">@return</span> T 返回值为T类型</span><br><span class="line"> * 说明：</span><br><span class="line"> * <span class="number">1</span>）<span class="keyword">public</span> 与 返回值中间&lt;T&gt;非常重要，可以理解为声明此方法为泛型方法。</span><br><span class="line"> * <span class="number">2</span>）只有声明了&lt;T&gt;的方法才是泛型方法，泛型类中的使用了泛型的成员方法并不是泛型方法。</span><br><span class="line"> * <span class="number">3</span>）&lt;T&gt;表明该方法将使用泛型类型T，此时才可以在方法中使用泛型类型T。</span><br><span class="line"> * <span class="number">4</span>）与泛型类的定义一样，此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型。</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">genericMethod</span><span class="params">(Class&lt;T&gt; tClass)</span><span class="keyword">throws</span> InstantiationException ,</span></span><br><span class="line"><span class="function">  IllegalAccessException</span>&#123;</span><br><span class="line">        T instance = tClass.newInstance();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-5泛型通配符？"><a href="#2-5泛型通配符？" class="headerlink" title="2.5泛型通配符？"></a>2.5泛型通配符？</h5><ul>
+<li><p>类型通配符一般是使用？来代替具体的类型实参</p>
 </li>
-<li><h5 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h5><p>一个事务对同一数据的读取结果前后不一致。两次读取中间被其他事务修改了</p>
-</li>
-<li><h5 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h5><p>幻读是指事务读取某个范围的数据时，因为其他事务的操作导致前后两次读取的结果不一致。幻读和不可重复读的区别在于,不可重复读是针对确定的某一行数据而言,而幻读是针对不确定的多行数据。因而幻读通常出现在带有查询条件的范围查询中</p>
-</li>
-</ol>
-<h2 id="事务的ACID特性"><a href="#事务的ACID特性" class="headerlink" title="事务的ACID特性"></a>事务的ACID特性</h2><ul>
-<li><h5 id="原子性-Atomicity"><a href="#原子性-Atomicity" class="headerlink" title="原子性(Atomicity)"></a>原子性(Atomicity)</h5><p>事务中的所有操作作为一个整体像原子一样不可分割，要么全部成功,要么全部失败</p>
-</li>
-<li><h5 id="一致性-Consistency"><a href="#一致性-Consistency" class="headerlink" title="一致性(Consistency)"></a>一致性(Consistency)</h5><p>事务的执行结果必须使数据库从一个一致性状态到另一个一致性状态。一致性状态是指:1.系统的状态满足数据的完整性约束(主码,参照完整性,check约束等) 2.系统的状态反应数据库本应描述的现实世界的真实状态,比如转账前后两个账户的金额总和应该保持不变</p>
-</li>
-<li><h5 id="隔离性-Isolation"><a href="#隔离性-Isolation" class="headerlink" title="隔离性(Isolation)"></a>隔离性(Isolation)</h5><p>并发执行的事务不会相互影响,其对数据库的影响和它们串行执行时一样。比如多个用户同时往一个账户转账,最后账户的结果应该和他们按先后次序转账的结果一样</p>
-</li>
-<li><h5 id="持久性-Durability"><a href="#持久性-Durability" class="headerlink" title="持久性(Durability)"></a>持久性(Durability)</h5><p>事务一旦提交,其对数据库的更新就是持久的。任何事务或系统故障都不会导致数据丢失</p>
+<li><p>所以，类型通配符是类型实参，而不是类型形参</p>
+<p><img src="/generic/gen_1.jpg" alt="alt 类型通配符"></p>
 </li>
 </ul>
 
@@ -352,7 +356,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://tianxuang.github.io/2020/12/27/transaction/" title="Mysql的事务详解" target="_blank" rel="external">https://tianxuang.github.io/2020/12/27/transaction/</a>
+      <a href="https://tianxuang.github.io/2021/08/22/generic/" title="泛型基础" target="_blank" rel="external">https://tianxuang.github.io/2021/08/22/generic/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -398,13 +402,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2021/01/20/mysql-tree/" title="B树和B+树的基本介绍"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/11/25/hello-world/" title="欢迎"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/08/18/reflexJava/" title="java 反射基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
