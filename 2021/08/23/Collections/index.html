@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://tianxuang.github.io/2021/08/23/Collections/col_map.png">
 <meta property="og:image" content="https://tianxuang.github.io/2021/08/23/Collections/col_2.jpg">
 <meta property="article:published_time" content="2021-08-23T14:04:21.000Z">
-<meta property="article:modified_time" content="2021-08-26T15:11:49.102Z">
+<meta property="article:modified_time" content="2021-09-16T14:48:40.776Z">
 <meta property="article:author" content="迷途小书童">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -415,6 +415,33 @@
 <li>红黑树</li>
 </ul>
 </li>
+</ul>
+<h4 id="五、Map"><a href="#五、Map" class="headerlink" title="五、Map"></a>五、Map</h4><h5 id="1、HashMap"><a href="#1、HashMap" class="headerlink" title="1、HashMap"></a>1、HashMap</h5><ul>
+<li><p>基于哈希表实现（数组+链表+红黑树）</p>
+</li>
+<li><p>线程不安全，运行效率快；允许为key value为null</p>
+<p><strong>哈希map源码分析</strong></p>
+<ul>
+<li><p>1、刚创建时是null，添加元素后，默认初始容量 16       </p>
+</li>
+<li><p>2、默认加载因子0.75 （每次扩容为原来的2倍（目的是减少调整元素的个数），在什么时候扩容，当容量达到16*0.75时，扩容）</p>
+</li>
+<li><p>3、jdk1.8 如果数组的大小&gt;=64 且链表的长度大于8，则会把链表转成红黑树</p>
+</li>
+<li><p>4、jdk1.8 当树的节点数小于6时，转为链表结构</p>
+</li>
+<li><p>5、jdk1.8 以前，链表是头插入 1.8以后是尾插入</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2、HashTable"><a href="#2、HashTable" class="headerlink" title="2、HashTable"></a>2、HashTable</h5><ul>
+<li>线程安全，运行效率低；不允许key和value为null</li>
+<li>默认容量11     加载因子0.75</li>
+</ul>
+<h5 id="3、TreeMap"><a href="#3、TreeMap" class="headerlink" title="3、TreeMap"></a>3、TreeMap</h5><ul>
+<li>实现了SortedMap接口（是Map的子接口），可以对key自动排序</li>
+<li>基于红黑树实现的</li>
 </ul>
 
       
